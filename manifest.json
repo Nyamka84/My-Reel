@@ -2,7 +2,7 @@
   "name": "My REEL",
   "short_name": "My REEL",
   "description": "Өдөр бүр 10 өгүүлбэр сурцгаая",
-  "start_url": "/My-REEL/",
+  "start_url": "/My-Reel/",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#4f46e5",
