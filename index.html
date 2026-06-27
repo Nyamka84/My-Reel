@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My REEL</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My REEL</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- ↓↓↓ ДООРХ МӨРҮҮДИЙГ НЭМНЭ ↓↓↓ -->
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="manifest.json"/>
+
+  <!-- iOS тохиргоо -->
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="My REEL"/>
+  <link rel="apple-touch-icon" href="icon-192.png"/>
+
+  <!-- Android тохиргоо -->
+  <meta name="theme-color" content="#4f46e5"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     ЛИЦЕНЗИЙН ДЭЛГЭЦ
+══════════════════════════════════════ -->
+<div id="page-license" class="page active">
+  <div class="license-wrap">
+    <div class="license-logo">🇬🇧</div>
+    <h1 class="license-title">My REEL</h1>
+    <p class="license-sub">Өдөр бүр 10 өгүүлбэр</p>
+
+    <div class="license-box">
+      <div class="license-icon">🔐</div>
+      <h2>Апп идэвхижүүлэх</h2>
+      <p>Та нэг удаагийн идэвхижүүлэх кодоо оруулна уу</p>
+
+      <input
+        type="text"
+        id="license-input"
+        class="license-input"
+        placeholder="ANGLI-XXXX-XXXX"
+        maxlength="15"
+        autocomplete="off"
+        autocapitalize="characters"
+      />
+      <div class="license-error" id="license-error"></div>
+      <button class="btn-activate" id="btn-activate">
+        Идэвхижүүлэх →
+      </button>
+
+      <div class="license-help">
+        <p>💡 Кодыг хэрхэн авах вэ?</p>
+        <p>Манай утас/мессенжерт холбогдож, төлбөр хийснийхээ дараа
+        таны и-мэйл хаягт код илгээгдэнэ.</p>
+        <a href="tel:+97688003530" class="license-contact">📞 Холбогдох</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     НҮҮР ХУУДАС
+══════════════════════════════════════ -->
+<div id="page-home" class="page">
+
+  <!-- Header -->
+  <div class="home-header">
+    <div class="header-left">
+      <div class="logo-small">🇬🇧</div>
+      <div>
+        <h1>My REEL</h1>
+        <p class="subtitle">Өдөр бүр 10 өгүүлбэр</p>
+      </div>
+    </div>
+    <button class="btn-theme" id="btn-theme" title="Өдөр/Шөнийн горим">
+      🌙
+    </button>
+  </div>
+
+  <!-- Ерөнхий шалгалт -->
+  <div class="general-exam-section" id="general-exam-section">
+    <div class="general-exam-card" id="general-exam-card">
+      <div class="ge-left">
+        <div class="ge-icon">📊</div>
+        <div>
+          <div class="ge-title">Ерөнхий Шалгалт</div>
+          <div class="ge-sub" id="ge-sub">2 өдөр дуусгасны дараа нээгдэнэ</div>
+        </div>
+      </div>
+      <div class="ge-right">
+        <div class="ge-score" id="ge-score"></div>
+        <div class="ge-arrow">→</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Өдрүүд -->
+  <div class="section-title">Өдрүүд</div>
+  <div class="days-container" id="days-container"></div>
+
+  <button class="btn-add-day" id="btn-add-day">
+    <span class="plus-icon">+</span> Шинэ өдөр нэмэх
+  </button>
+
+</div>
+
+<!-- ══════════════════════════════════════
+     ӨДРИЙН ХУУДАС
+══════════════════════════════════════ -->
+<div id="page-day" class="page">
+  <div class="page-header">
+    <button class="btn-back" id="btn-back">← Буцах</button>
+    <h2 id="day-title">Day 1</h2>
+    <div class="day-score-badge" id="day-score-badge"></div>
+  </div>
+
+  <!-- Өгүүлбэрийн жагсаалт -->
+  <div class="sentences-container" id="sentences-container"></div>
+
+  <!-- Шалгалт -->
+  <div class="exam-trigger-card" id="exam-card">
+    <div class="exam-trigger-inner">
+      <span class="exam-trigger-icon">📝</span>
+      <div>
+        <div class="exam-trigger-title">Өдрийн Шалгалт</div>
+        <div class="exam-trigger-sub" id="exam-trigger-sub">
+          10 өгүүлбэрийг бүгдийг бөглөсний дараа
+        </div>
+      </div>
+    </div>
+    <span class="exam-trigger-arrow">→</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     КАРТ ДЭЛГЭЦ (Flip Modal)
+══════════════════════════════════════ -->
+<div id="modal-overlay" class="modal-overlay" style="display:none">
+  <div class="modal-wrapper">
+
+    <button class="modal-close" id="modal-close">✕</button>
+
+    <!-- Дугаар + Товч мэдэгдэл -->
+    <div class="modal-topbar">
+      <div class="modal-num" id="modal-num">1-р өгүүлбэр</div>
+      <div class="modal-tap-hint" id="modal-tap-hint">
+        Карт дарж эргүүлнэ үү
+      </div>
+    </div>
+
+    <!-- 3D FLIP КАРТ -->
+    <div class="scene" id="scene">
+      <div class="card3d" id="card3d">
+
+        <!-- УРД: Монгол -->
+        <div class="card-face card-front" id="card-front">
+          <div class="face-label mn-label">🇲🇳 Монгол</div>
+
+          <div class="mn-display" id="mn-display">
+            <!-- Хадгалагдсан Монгол өгүүлбэр эсвэл оруулах форм -->
+          </div>
+
+          <!-- Шинэ өгүүлбэр оруулах хэсэг -->
+          <div class="input-section" id="input-section">
+            <textarea
+              id="mn-input"
+              class="mn-textarea"
+              placeholder="Монгол өгүүлбэрээ бичнэ үү..."
+              rows="3"
+            ></textarea>
+            <button class="btn-do-translate" id="btn-do-translate">
+              🔄 Орчуулж эргүүлэх
+            </button>
+          </div>
+
+          <!-- Засах товч (бөглөгдсөн үед) -->
+          <div class="edit-mn-section" id="edit-mn-section" style="display:none">
+            <textarea
+              id="mn-edit-input"
+              class="mn-textarea"
+              rows="3"
+              placeholder="Монгол өгүүлбэр засна уу..."
+            ></textarea>
+            <div class="edit-btn-row">
+              <button class="btn-edit-cancel" id="btn-mn-edit-cancel">Болих</button>
+              <button class="btn-edit-save" id="btn-mn-edit-save">
+                💾 Хадгалж эргүүлэх
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- АРА: Англи -->
+        <div class="card-face card-back" id="card-back">
+          <div class="face-label en-label">🇬🇧 English</div>
+
+          <div class="en-sentence" id="en-sentence"></div>
+
+          <!-- Засах input -->
+          <div class="en-edit-wrap" id="en-edit-wrap" style="display:none">
+            <textarea
+              id="en-edit-input"
+              class="mn-textarea"
+              rows="3"
+            ></textarea>
+            <div class="edit-btn-row">
+              <button class="btn-edit-cancel" id="btn-en-edit-cancel">Болих</button>
+              <button class="btn-edit-save" id="btn-en-edit-save">💾 Хадгалах</button>
+            </div>
+          </div>
+
+          <!-- Үйлдлийн товчлуурууд -->
+          <div class="action-bar">
+            <button class="act-btn act-voice" id="btn-voice">
+              <span class="act-icon">🔊</span>
+              <span>Сонсох</span>
+            </button>
+            <button class="act-btn act-edit" id="btn-en-edit">
+              <span class="act-icon">✏️</span>
+              <span>Засах</span>
+            </button>
+            <button class="act-btn act-mic" id="btn-check-speech">
+              <span class="act-icon">🎤</span>
+              <span>Шалгах</span>
+            </button>
+          </div>
+
+          <div class="speech-result" id="speech-result"></div>
+
+          <button class="btn-save-done" id="btn-save-done">✅ Хадгалах</button>
+        </div>
+
+      </div><!-- /card3d -->
+    </div><!-- /scene -->
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     ШАЛГАЛТЫН ХУУДАС
+══════════════════════════════════════ -->
+<div id="page-exam" class="page">
+  <div class="page-header">
+    <button class="btn-back" id="btn-back-exam">← Буцах</button>
+    <h2 id="exam-title">Шалгалт</h2>
+  </div>
+
+  <div class="exam-prog-row">
+    <span id="exam-curr">1</span>/<span id="exam-tot">10</span>
+    <div class="exam-prog-bar">
+      <div class="exam-prog-fill" id="exam-prog-fill"></div>
+    </div>
+  </div>
+
+  <!-- Асуулт карт -->
+  <div class="exam-q-card" id="exam-q-card">
+    <div class="exam-q-label">Англиар бичнэ үү</div>
+    <div class="exam-q-mn" id="exam-q-mn"></div>
+    <textarea
+      id="exam-ans-input"
+      class="exam-ans-textarea"
+      placeholder="Хариултаа энд бичнэ үү..."
+      rows="3"
+    ></textarea>
+    <div class="exam-feedback" id="exam-feedback"></div>
+    <button class="btn-exam-next" id="btn-exam-next">Шалгах →</button>
+  </div>
+
+  <!-- Үр дүн -->
+  <div class="exam-result-wrap" id="exam-result-wrap" style="display:none">
+    <div class="result-ring">
+      <svg viewBox="0 0 120 120" class="ring-svg">
+        <circle cx="60" cy="60" r="52"
+          fill="none" stroke="#1e293b" stroke-width="12"/>
+        <circle cx="60" cy="60" r="52"
+          fill="none"
+          stroke="url(#grad)"
+          stroke-width="12"
+          stroke-linecap="round"
+          stroke-dasharray="326.7"
+          stroke-dashoffset="326.7"
+          id="ring-progress"
+          transform="rotate(-90 60 60)"/>
+        <defs>
+          <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#4f46e5"/>
+            <stop offset="100%" stop-color="#10b981"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="ring-score">
+        <span id="ring-num">0</span>
+        <span class="ring-max">/10</span>
+      </div>
+    </div>
+
+    <div class="result-msg" id="result-msg"></div>
+
+    <div class="result-list" id="result-list"></div>
+
+    <button class="btn-finish" id="btn-finish">Дуусгах</button>
+  </div>
+</div>
+
+<!-- LOADING -->
+<div id="loading-overlay" class="loading-overlay" style="display:none">
+  <div class="loading-ring"></div>
+  <div>Орчуулж байна...</div>
+</div>
+
+<script src="data.js"></script>
+<script src="license.js"></script>
+<script src="app.js"></script>
+  <!-- Service Worker бүртгэх -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(() => console.log('SW бүртгэгдлээ'))
+          .catch(err => console.log('SW алдаа:', err));
+      });
+    }
+  </script>
+</body>
+</html>
