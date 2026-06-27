@@ -1559,3 +1559,45 @@ body.light-mode .act-btn {
   font-weight: 900;
   letter-spacing: 2px;
 }
+/* ══════════════════════════════════
+   LICENSE LOGO
+══════════════════════════════════ */
+.license-logo-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  object-fit: cover;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 32px rgba(79,70,229,0.5);
+}
+
+/* ══════════════════════════════════
+   APP TITLE — My REEL
+══════════════════════════════════ */
+.app-title {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
+  background: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.reel-text {
+  font-size: inherit;
+  font-weight: 900;
+  letter-spacing: 3px;
+  background: linear-gradient(135deg, #818cf8, #10b981) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  text-transform: uppercase;
+}
+
+.license-title {
+  font-size: 32px !important;
+  font-weight: 900 !important;
+}
